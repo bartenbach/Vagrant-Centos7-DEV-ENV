@@ -1,0 +1,35 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: Install development environment packages
+      yum:
+        name: "{{ packages }}"
+      vars:
+        packages:
+        # epel packages
+        - epel-release
+        # RedHat software collections
+        - centos-release-scl
+        # basic tools and packages
+        - tree
+        - xorg-x11-xauth
+        - vim
+        - firefox
+        # services
+        - httpd
+        # languages (perl and gcc are already installed)
+        - python
+        - java
+        - golang
+        # development package managers & build tools
+        - python2-pip
+        - python-virtualenv
+        - python27-python-virtualenv
+        - python34-pip
+        - maven
+        - npm
+        # version control systems
+        - mercurial
+        - git
+  roles:
+    - gantsign.intellij
